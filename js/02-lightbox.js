@@ -19,7 +19,7 @@ const newElements = makeElements(galleryItems);
 
 gallery.insertAdjacentHTML("afterbegin", newElements);
 
-var lightbox = new SimpleLightbox(".gallery a", {
+const lightbox = new SimpleLightbox(".gallery a", {
   captions: true,
   captionsData: "alt",
   captionPosition: "bottom",

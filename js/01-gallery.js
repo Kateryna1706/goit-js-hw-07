@@ -42,5 +42,7 @@ function handleClick(event) {
 function handleKeydown(event) {
   if (event.code === "Escape") {
     instance.close();
+
+    document.removeEventListener("keydown", handleKeydown);
   }
 }
