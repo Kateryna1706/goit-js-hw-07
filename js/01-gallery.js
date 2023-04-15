@@ -30,19 +30,22 @@ gallery.addEventListener("click", handleClick);
 
 function handleClick(event) {
   event.preventDefault();
-  instance = basicLightbox.create(`
+  instance = basicLightbox.create(
+    `
 <img src="${event.target.dataset.source}">
-`);
+`,
+    {
+      onShow: (instance) => document.addEventListener("keydown", handleKeydown),
+      onClose: (instance) =>
+        document.removeEventListener("keydown", handleKeydown),
+    }
+  );
 
   instance.show();
-
-  document.addEventListener("keydown", handleKeydown);
 }
 
 function handleKeydown(event) {
   if (event.code === "Escape") {
     instance.close();
-
-    document.removeEventListener("keydown", handleKeydown);
   }
 }
